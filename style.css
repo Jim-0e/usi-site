@@ -1,6 +1,6 @@
 @font-face {
         font-family: "SFProDisplay";
-        src: url("./fonts/SFProDisplay-Medium.woff") format("woff");
+        src: url("/fonts/SFProDisplay-Medium.woff") format("woff");
       }
 body{
     width: 100%;
@@ -20,7 +20,7 @@ body{
 }
 html{
     font-size: 10px;
-   
+ 
 }
 
 a{
@@ -114,6 +114,7 @@ nav p{
 .main{
     width: 100%;
     margin-bottom: 17.5rem;
+    
 }
 .main_claster_phone{
     display: none;
@@ -137,6 +138,7 @@ nav p{
     background-size:cover;
     background-position: center;
     margin-bottom: 5.6rem;
+    background-attachment:fixed;
 }
 @media (max-width: 600px){
     .main{
@@ -280,14 +282,14 @@ nav p{
     position: absolute;
     top: 0;
     left: 0;
-    background-attachment: fixed;
+    
     z-index: 0;
     width: 100%;
     margin-top:7rem ;
     height: 80rem;
-    background-image: url('./imgs/fon_home.jpg');
+    background-image: url('./imgs/img_paralax.jpg');
     background-size: cover;
-
+    background-position:center;
 }
 .home_pluses_info{
     width: 68.7rem;
@@ -615,10 +617,7 @@ nav p{
     align-items: center;
     justify-content: center;
     width: 3198px;
-    padding: 20px;
-    position: relative;
-    /* z-index: 5; */
-    
+    position: relative; 
 }
 
 .slider-controls {
@@ -631,29 +630,62 @@ nav p{
     height: 600px;
 
     margin-top: 3rem;
-    margin-left: 10rem; 
+    margin-left: 0rem; 
     z-index: 5;
 }
 .slider-controls div{
-
-    
     top: 50%;
     transform: translateY(-50%);
 }
+.slider-controls button img{
+
+    position: relative;
+    z-index: 222;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .slider-controls button{
+    width: 14rem;
+    height: 14rem;
     padding: 5.5rem 4rem;
     display: block;
     border-radius: 50%;
     background-color: transparent;
     border: 1px gray solid;
     margin-bottom: 1.6rem;
+    z-index: 2;
 }
+.slider-controls button::before{
+    z-index: 1;
+    content: " ";
+    width: 22%;
+    height: 10%;
+    background-color: #D1CDDA;
+    position: absolute;
+    
+    left: 50%;
+    translate: -50%;
+    border-radius: 50%;
+    transition: all .6s;
+    opacity: 0;
+
+}
+.slider-controls button:hover::before{
+    opacity: 1;
+    transform: scale(3.6);
+}
+.slider-controls button:active::before{
+    opacity: 1;
+    transition: all .3s;
+    transform: scale(.4);
+}
+
 .slider-wrapper {
- 
+    overflow-x: hidden;
     display: flex;
     margin-left: 7rem;
     width:2998px; 
-    /* z-index: 6; */
 }
 
 .slider {
@@ -671,11 +703,16 @@ nav p{
     flex-direction: column;
     text-align: left;
     justify-content: space-between;
-    
+    position: relative;
     color: #333;
     padding: 3.2rem;
-    transition: background-color 0.3s ease;
+    transition: all 1s;
 }
+
+
+/*  */
+
+/*  */
 .slide img{
     width: 16rem;
     height: 16rem;
@@ -685,11 +722,38 @@ nav p{
 .slide p{
     font-size: 2.4rem;
     font-weight: 500;
+    z-index: 3;
 }
-.slide.active {
-    background-color: black;
+
+.slide.active{
+    /* background-color: black; */
     color: white;
+    transition: 1s all;
+    
 }
+.slide::after{
+    content: " ";
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0px;
+    background-color: rgb(0, 0, 0);
+    transition: .7s all;
+    background-position: top;
+    z-index: 2;
+}
+.slide.active::after{
+    content: " ";
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-position: bottom;
+    background-color: rgb(0, 0, 0);
+}
+/*  */
+
+/*  */
 .slideNumber{
     display: flex;
     margin-left: 5px;
@@ -722,7 +786,7 @@ nav p{
     background-color: black;
 }
 /* Медиа Запросы */
-@media (min-width: 830px) and (max-width: 1208px) {
+@media ( hover:none ) and (min-width: 830px) and (max-width: 1208px) {
     .home{
      
         margin-top: 60rem;
@@ -757,6 +821,7 @@ nav p{
 
         height: 100vh;
     }
+  
 }
 @media (min-width: 601px) and (max-width: 829px){
     .home{
@@ -863,8 +928,14 @@ nav p{
     }
 }
 .slide.active .slide_icon path{
-    fill: rgb(255, 255, 255)
+    fill: rgb(255, 255, 255);
+    z-index: 3;
 }
 .slide_icon path{
     fill: black;
+    transition: .7s all;
+    z-index: 3;
+}
+.slide svg{
+    z-index: 3;
 }

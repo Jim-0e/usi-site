@@ -24,7 +24,7 @@ $(document).ready(function() {
 $(window).scroll(function () {
     var scrollTop = $(window).scrollTop();
     $('.home_fon').css({
-      'transform': 'translateY(-' + (scrollTop * 0.2) + 'px)',
+      'transform': 'translateY(-' + (scrollTop * 0.27) + 'px)',
 
     });
     var scrollTop = $(window).scrollTop();
@@ -102,4 +102,19 @@ $(document).ready(function() {
 
   createDots();
   updateSlider();
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slide');
+
+    slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            slides.forEach(s => s.classList.remove('active')); // Remove active class from all
+            slide.classList.add('active'); // Add active class to clicked slide
+        });
+    });
 });
